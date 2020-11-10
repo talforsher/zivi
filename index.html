@@ -4,6 +4,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="כל הברכות לבת מצווה של זיוי. חברים, הורים, אחים ואחיינים!">
+    <link rel="icon" href="zivcon.png" type="image/png" sizes="16x16">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"
@@ -402,8 +403,7 @@
 
                 <div class="profile-image">
 
-                    <img src="profile.jpg" width="152"
-                        alt="">
+                    <img src="profile.jpg" width="152" alt="">
 
                 </div>
 
@@ -493,12 +493,14 @@
                         <span class="visually-hidden">Video</span><i class="fas fa-video" aria-hidden="true"></i>
                     </div>
                 </div>`
-            return div  
+            return div
         }
 
         addEventListener("load", function () {
-            list.forEach(el =>
-                gallery.append(element(el))
+            list.forEach((el,index) =>
+                setTimeout(function () {
+                    gallery.append(element(el))
+                }, index * 600)
             )
         })
     </script>
