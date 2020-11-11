@@ -480,12 +480,11 @@
             "6e44b4bbb650402b6387da8ecc0ec116"
         ]
 
-        function element(streamURL) {
+        function element() {
             const div = document.createElement("div")
             div.innerHTML =
                 `<div class="gallery-item" tabindex="0">
-                    <div style="position: relative; padding-top: 100%;"><iframe src=
-                        "https://iframe.videodelivery.net/${streamURL}?loop=true"
+                    <div style="position: relative; padding-top: 100%;"><iframe class="frame"
                          style="border: none; position: absolute; top: 0; height: 100%; width: 100%;"  allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
                     <div class="gallery-item-type">
                         <span class="visually-hidden">Video</span><i class="fas fa-video" aria-hidden="true"></i>
@@ -495,31 +494,38 @@
         }
 
         addEventListener("load", () => {
-            for (var count = 0; count < 3; count++) appendEL()
+            appendEL()
         })
 
         function appendEL() {
-            if (i < list.length)
-                gallery.append(element(list[i]))
-            i++
+            if (i < list.length){
+                var newElement = element()
+                gallery.append(newElement)
+                var newFrame = document.getElementsByClassName("frame")[0]
+                newFrame.src = `https://iframe.videodelivery.net/${list[i]}?loop=true`
+                i++
+                newFrame.addEventListener("load", function(){
+                    newFrame.classList = ""
+                    appendEL()
+                })
+            }
+            
         }
 
-        document.onscroll = function () {
-            setTimeout(function () {
-                var pos = getVerticalScrollPercentage(document.body)
-                console.log(pos)
-                if (pos > 95)
-                    for (var count = 0; count < 3; count++) appendEL()
-            }, 2000)
+        // document.onscroll = function () {
+        //     setTimeout(function () {
+        //         var pos = getVerticalScrollPercentage(document.body)
+        //         if (pos > 95)
+        //             for (var count = 0; count < 3; count++) appendEL()
+        //     }, 2000)
 
-        };
+        // };
 
-        function getVerticalScrollPercentage(elm) {
-            var p = elm.parentNode,
-                pos = (elm.scrollTop || p.scrollTop) / (p.scrollHeight - p.clientHeight) * 100
-
-            return pos
-        }
+        // function getVerticalScrollPercentage(elm) {
+        //     var p = elm.parentNode,
+        //         pos = (elm.scrollTop || p.scrollTop) / (p.scrollHeight - p.clientHeight) * 100
+        //     return pos
+        // }
     </script>
 
 
