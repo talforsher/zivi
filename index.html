@@ -374,6 +374,22 @@
                 }
             }
         }
+
+        .loader {
+            width: 5rem;
+            height: 5rem;
+            border: 0.6rem solid #999;
+            border-bottom-color: transparent;
+            border-radius: 50%;
+            margin: 0 auto;
+            animation: loader 500ms linear infinite;
+        }
+
+        @keyframes loader {
+            to {
+                transform: rotate(360deg);
+            }
+        }
     </style>
     <title>ZivStagram - Zivi's Batmitzva</title>
 </head>
@@ -433,7 +449,7 @@
             <div class="gallery">
             </div>
             <!-- End of gallery -->
-
+            <div class="loader"></div>
 
         </div>
         <!-- End of container -->
@@ -489,10 +505,13 @@
         }
 
         document.onscroll = function () {
-            var pos = getVerticalScrollPercentage(document.body)
-            console.log(pos)
-            if (pos > 95)
-                for (var count = 0; count < 3; count++) appendEL()
+            setTimeout(function () {
+                var pos = getVerticalScrollPercentage(document.body)
+                console.log(pos)
+                if (pos > 95)
+                    for (var count = 0; count < 3; count++) appendEL()
+            }, 2000)
+
         };
 
         function getVerticalScrollPercentage(elm) {
