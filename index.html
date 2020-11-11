@@ -468,17 +468,16 @@
             const div = document.createElement("div")
             div.innerHTML =
                 `<div class="gallery-item" tabindex="0">
-
-                        <video width="320" height="240" controls>
-                            <source src="https://watch.cloudflarestream.com/${streamURL}" type="video/mp4">
-                        </video>
-
+                    <div style="position: relative; padding-top: 100%;"><iframe src=
+                        "https://iframe.videodelivery.net/${streamURL}?loop=true"
+                         style="border: none; position: absolute; top: 0; height: 100%; width: 100%;"  allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
                     <div class="gallery-item-type">
                         <span class="visually-hidden">Video</span><i class="fas fa-video" aria-hidden="true"></i>
                     </div>
                 </div>`
             return div
         }
+
         addEventListener("load", () => {
             for (var count = 0; count < 3; count++) appendEL()
         })
