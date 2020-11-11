@@ -538,11 +538,11 @@
                     `https://iframe.videodelivery.net/${list[i]}?preload=true&muted=true&autoplay=true&controls=false`
                 i++
                 newFrame.addEventListener("load", function () {
-                    newFrame.classList = ""
                     const player = Stream(newFrame)
                     newFrame.addEventListener('click', () => {
                         player.pause()
                     })
+                    newFrame.classList = ""
                     setTimeout(function () {
                         appendEL()
                     }, 50)
