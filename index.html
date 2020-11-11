@@ -502,7 +502,7 @@
             var pos = getVerticalScrollPercentage(document.body)
             console.log(pos)
             if (pos > 90)
-                appendEL()
+                for (var count = 0; count < 3; count++) appendEL()
         };
 
         function getVerticalScrollPercentage(elm) {
