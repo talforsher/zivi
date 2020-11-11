@@ -223,13 +223,6 @@
             object-fit: cover;
         }
 
-        /* Loader */
-
-        .loader {
-            width: 50%;
-            margin: auto;
-            text-align: center;
-        }
 
         /* Media Query */
 
@@ -441,9 +434,6 @@
             </div>
             <!-- End of gallery -->
 
-            <div class="loader">
-                <h1>load more</h1>
-            </div>
 
         </div>
         <!-- End of container -->
@@ -501,7 +491,7 @@
         document.onscroll = function () {
             var pos = getVerticalScrollPercentage(document.body)
             console.log(pos)
-            if (pos > 90)
+            if (pos > 95)
                 for (var count = 0; count < 3; count++) appendEL()
         };
 
