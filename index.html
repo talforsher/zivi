@@ -455,7 +455,6 @@
         <!-- End of container -->
 
     </main>
-    <script src="https://embed.videodelivery.net/embed/sdk.latest.js"></script>
     <script>
         const gallery = document.querySelector(".gallery")
         var i = 0;
@@ -536,7 +535,7 @@
                 gallery.append(newElement)
                 var newFrame = document.getElementsByClassName("frame")[0]
                 newFrame.src =
-                    `https://iframe.videodelivery.net/${list[i]}?preload=true&muted=true&autoplay=true&loop=true`
+                    `https://iframe.videodelivery.net/${list[i]}?preload=true&muted=true&autoplay=true`
                 i++
                 newFrame.addEventListener("load", function () {
                     newFrame.classList = ""
