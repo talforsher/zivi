@@ -48,6 +48,16 @@
             display: block;
         }
 
+        .insta {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            overflow: hidden;
+            border: none;
+            position: absolute;
+            top: 0;
+        }
+
         .container {
             max-width: 93.5rem;
             margin: 0 auto;
@@ -457,7 +467,8 @@
     </main>
     <script>
         const gallery = document.querySelector(".gallery")
-        var i = 0;
+        var i = 0,
+            j = 1
         const list = [
             "c92577877b6c2e6dc11b748181461e74",
             "5cb65920aff9c8e68111d3524451424b",
@@ -512,6 +523,15 @@
             "d6341738761a0b0bbb9b93cf510853ae"
         ]
 
+        function imagef() {
+            const div = document.createElement("div")
+            div.innerHTML =
+                `<div class="gallery-item" tabindex="0">
+                    <div style="position: relative; padding-top: 100%;"><img class="insta new-image"  style="border: none; position: absolute; top: 0; height: 100%; width: 100%;" /></div>
+                </div>`
+            return div
+        }
+
         function element() {
             const div = document.createElement("div")
             div.innerHTML =
@@ -526,8 +546,25 @@
         }
 
         addEventListener("load", () => {
-            appendEL()
+            appendImages()
         })
+
+        function appendImages() {
+            if (j < 167) {
+                var newElement = imagef()
+                gallery.append(newElement)
+                var newImage = document.getElementsByClassName("new-image")[0]
+                newImage.src = `img/image (${j}).jpg`
+                j++
+                newImage.addEventListener("load", function () {
+                    newImage.classList = "insta"
+                    setTimeout(function () {
+                        appendImages()
+                    }, 20)
+                })
+            } else
+                appendEL()
+        }
 
         function appendEL() {
             if (i < list.length) {
