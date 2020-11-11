@@ -535,13 +535,9 @@
                 gallery.append(newElement)
                 var newFrame = document.getElementsByClassName("frame")[0]
                 newFrame.src =
-                    `https://iframe.videodelivery.net/${list[i]}?preload=true&muted=true&autoplay=true&controls=false&loop=true`
+                    `https://iframe.videodelivery.net/${list[i]}?preload=true&muted=true&autoplay=true&loop=true`
                 i++
                 newFrame.addEventListener("load", function () {
-                    const player = Stream(newFrame)
-                    newFrame.addEventListener('click', () => {
-                        player.muted = !player.muted
-                    })
                     newFrame.classList = ""
                     setTimeout(function () {
                         appendEL()
