@@ -455,6 +455,7 @@
         <!-- End of container -->
 
     </main>
+    <script src="https://embed.videodelivery.net/embed/sdk.latest.js"></script>
     <script>
         const gallery = document.querySelector(".gallery")
         var i = 0;
@@ -529,21 +530,27 @@
         })
 
         function appendEL() {
-            if (i < list.length){
+            if (i < list.length) {
                 var newElement = element()
                 gallery.append(newElement)
                 var newFrame = document.getElementsByClassName("frame")[0]
-                newFrame.src = `https://iframe.videodelivery.net/${list[i]}?preload=true&muted=true&autoplay=true&controls=false`
+                newFrame.src =
+                    `https://iframe.videodelivery.net/${list[i]}?preload=true&muted=true&autoplay=true&controls=false`
                 i++
-                newFrame.addEventListener("load", function(){
+                newFrame.addEventListener("load", function () {
                     newFrame.classList = ""
-                    setTimeout(function(){appendEL()},50)
+                    const player = Stream(newFrame)
+                    newFrame.addEventListener('click', () => {
+                        player.pause()
+                    })
+                    setTimeout(function () {
+                        appendEL()
+                    }, 50)
                 })
-            }
-            else{
+            } else {
                 document.getElementsByClassName("loader")[0].style.display = "none"
             }
-            
+
         }
     </script>
 
