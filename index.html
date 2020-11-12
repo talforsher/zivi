@@ -546,39 +546,46 @@
         }
 
         addEventListener("load", () => {
-            appendImages()
+            appendEL()
         })
 
-        function appendImages() {
-            if (j < 30) {
-                var newElement = imagef()
-                gallery.append(newElement)
-                var newImage = document.getElementsByClassName("new-image")[0]
-                newImage.src = `img/image (${j}).jpg`
-                j++
-                newImage.addEventListener("load", function () {
-                    newImage.classList = "insta"
-                    setTimeout(function () {
-                        appendImages()
-                    }, 200)
-                })
-            } else
-                appendEL()
-        }
+        // function appendImages() {
+        //     if (j < 51) {
+        //         var newElement = imagef()
+        //         gallery.append(newElement)
+        //         var newImage = document.getElementsByClassName("new-image")[0]
+        //         newImage.src = `img/image (${j}).jpg`
+        //         j++
+        //         newImage.addEventListener("load", function () {
+        //             newImage.classList = "insta"
+        //             setTimeout(function () {
+        //                 appendImages()
+        //             }, 200)
+        //         })
+        //     } else
+        //         appendEL()
+        // }
 
         function appendEL() {
             if (i < list.length) {
                 var newElement = element()
                 gallery.append(newElement)
+                var newElement1 = imagef()
+                gallery.append(newElement1)
                 var newFrame = document.getElementsByClassName("frame")[0]
                 newFrame.src =
                     `https://iframe.videodelivery.net/${list[i]}?preload=true&muted=true&autoplay=true`
+                var newImage = document.getElementsByClassName("new-image")[0]
+                newImage.src = `img/image (${i+1}).jpg`
                 i++
                 newFrame.addEventListener("load", function () {
                     newFrame.classList = ""
                     setTimeout(function () {
                         appendEL()
-                    }, 3000)
+                    }, 2000)
+                })
+                newImage.addEventListener("load", function () {
+                    newImage.classList = "insta"
                 })
             } else {
                 document.getElementsByClassName("loader")[0].style.display = "none"
