@@ -546,27 +546,14 @@
         }
 
         addEventListener("load", () => {
-            appendEL()
+            if (window.innerHeight > window.innerWidth) {
+                appendEL(4000)
+            } else
+                appendEL(1000)
+
         })
 
-        // function appendImages() {
-        //     if (j < 51) {
-        //         var newElement = imagef()
-        //         gallery.append(newElement)
-        //         var newImage = document.getElementsByClassName("new-image")[0]
-        //         newImage.src = `img/image (${j}).jpg`
-        //         j++
-        //         newImage.addEventListener("load", function () {
-        //             newImage.classList = "insta"
-        //             setTimeout(function () {
-        //                 appendImages()
-        //             }, 200)
-        //         })
-        //     } else
-        //         appendEL()
-        // }
-
-        function appendEL() {
+        function appendEL(d) {
             if (i < list.length) {
                 var newElement = element()
                 gallery.append(newElement)
@@ -581,8 +568,8 @@
                 newFrame.addEventListener("load", function () {
                     newFrame.classList = ""
                     setTimeout(function () {
-                        appendEL()
-                    }, 2000)
+                        appendEL(d)
+                    }, d)
                 })
                 newImage.addEventListener("load", function () {
                     newImage.classList = "insta"
