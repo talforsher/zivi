@@ -566,7 +566,7 @@
                 newFrame.src =
                     `https://iframe.videodelivery.net/${list[i]}?preload=true&muted=true&autoplay=true`
                 var newImage = document.getElementsByClassName("new-image")[0]
-                newImage.src = `img/img (${i+1}).jpg`
+                newImage.src = `img/image (${i+1}).jpg`
                 i++
                 newFrame.addEventListener("load", function () {
                     newFrame.classList = ""
